@@ -220,7 +220,7 @@ def big_shoe_rebounds
   return associated_rebound
 end
 
-
+most_points_scored
 
 def most_points_scored
   most_points = 0
@@ -240,7 +240,7 @@ def most_points_scored
 end
 
 
-most_points_scored
+
 
 def winning_team
   home_points = 0
