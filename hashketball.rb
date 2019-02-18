@@ -295,8 +295,7 @@ def long_name_steals_a_ton?
     return false
   end
 end
-=======
->>>>>>> e5da80ca7f52b25dc00009b6ffb7356761cb5581
+
 
 def player_numbers(team_name)
   game_hash.each do |team, team_hash|
