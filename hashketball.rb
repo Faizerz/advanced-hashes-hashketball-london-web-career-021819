@@ -182,7 +182,7 @@ def team_names
   end
   team_name_array
 end
-<<<<<<< HEAD
+
 
 def player_numbers(team_name)
   game_hash.each do |team, team_hash|
