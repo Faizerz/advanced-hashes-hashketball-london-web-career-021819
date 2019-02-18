@@ -182,6 +182,7 @@ def team_names
   end
   team_name_array
 end
+<<<<<<< HEAD
 
 def player_numbers(team_name)
   game_hash.each do |team, team_hash|
@@ -293,9 +294,77 @@ def long_name_steals_a_ton?
     return false
   end
 end
+=======
+>>>>>>> e5da80ca7f52b25dc00009b6ffb7356761cb5581
+
+def player_numbers(team_name)
+  game_hash.each do |team, team_hash|
+    if team_hash[:team_name] == team_name
+      return (team_hash[:players].collect do |player, player_hash|
+        player_hash[:number]
+      end)
+    end
+  end
+end
+
+def player_stats(player_name)
+  game_hash.each do |team, team_hash|
+    team_hash[:players].each do |player, player_hash|
+      if player_hash[:name] == player_name
+        player_hash[:stats][:number] =  player_hash[:number]
+        player_hash[:stats][:shoe] = player_hash[:shoe]
+        return player_hash[:stats]
+      end
+    end
+  end
+end
+
+def big_shoe_rebounds()
+  biggest_shoe_size = 0
+  associated_rebound = 0
+  game_hash.each do |team, team_hash|
+    team_hash[:players].each do |player, player_hash|
+      if player_hash[:shoe] > biggest_shoe_size
+        biggest_shoe_size = player_hash[:shoe]
+        associated_rebound = player_hash[:stats][:rebounds]
+      end
+    end
+  end
+  return associated_rebound
+end
+
+def most_points_scored()
+  most_points = 0
+  most_player = 0
+  game_hash.each do |team, team_hash|
+    team_hash[:players].each do |player, player_hash|
+      if player_hash[:stats][:points] > most_points
+        most_points = player_hash[:stats][:points]
+        most_player = player_hash[:name]
+      end
+    end
+  end
+  return most_player
+end
 
 
-
-
-
-
+def winningteam()
+  home_points = 0
+  away_points = 0
+  game_hash.each do |team, team_hash|
+    team_hash[:players].each do |player, player_hash|
+      if team_hash[:name] == "Brooklyn Nets"
+        home_points += player_hash[:stats][:points]
+      elsif team_hash[:name] == "Charlotte Hornets"
+        away_points += player_hash[:stats][:points]
+      end
+    end
+  end
+  if home_points > away_points
+    return "Brooklyn Nets"
+  elsif away_points > home_points
+    return "Charlotte Hornets"
+  elsif home_points == away_points
+    return "Draw"
+  end
+end
